@@ -61,37 +61,37 @@ print()
 
 print(algoPrices[1][29])
 
-for l in location:
-	for al in algo:
+# for l in location:
+	# for al in algo:
 
-		print('/api?method=orders.get' + '&location=' + str(l) + '&algo=' + str(al[0]))
-		conn.request("POST", '/api?method=orders.get' + '&location=' + str(l) + '&algo=' + str(al[0]))
+		# print('/api?method=orders.get' + '&location=' + str(l) + '&algo=' + str(al[0]))
+		# conn.request("POST", '/api?method=orders.get' + '&location=' + str(l) + '&algo=' + str(al[0]))
 
-		response	= conn.getresponse()
-		print(response.status, response.reason)
-		data = response.read().decode()
-		conn.close()
+		# response	= conn.getresponse()
+		# print(response.status, response.reason)
+		# data = response.read().decode()
+		# conn.close()
 
-		result[l][int(al[0])] = json.loads(data)
+		# result[l][int(al[0])] = json.loads(data)
 
-av = 0
+# av = 0
 
-for loc in result:
-	for alg in loc:
-		wo = 0
-		for ord in alg['result']['orders']:
-			if ord['alive']:
-				if ord['workers']:
-					if ord['accepted_speed']:
-						wo += ord['workers']
+# for loc in result:
+	# for alg in loc:
+		# wo = 0
+		# for ord in alg['result']['orders']:
+			# if ord['alive']:
+				# if ord['workers']:
+					# if ord['accepted_speed']:
+						# wo += ord['workers']
 						# print(wo)
 						# print(ord)
-		if wo:
-			algoPrices[result.index(loc)][loc.index(alg)].append(float(algoPrices[result.index(loc)][loc.index(alg)][1]) / wo)
-			print(algoPrices[result.index(loc)][loc.index(alg)])
-		print()
-		print()
-		print()
+		# if wo:
+			# algoPrices[result.index(loc)][loc.index(alg)].append(float(algoPrices[result.index(loc)][loc.index(alg)][1]) / wo)
+			# print(algoPrices[result.index(loc)][loc.index(alg)])
+		# print()
+		# print()
+		# print()
 
 # print(result[0][5])
 
